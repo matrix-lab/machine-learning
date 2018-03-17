@@ -26,10 +26,10 @@ def get_sms_tels(records):
 
 
 telemarketers_tels = set()
-called_tels = get_called_tels(calls)
-sms_tels = get_sms_tels(texts)
+total_called_tels = get_called_tels(calls)
+total_sms_tels = get_sms_tels(texts)
 for call in calls:
-    if call[0] not in called_tels and call[0] not in sms_tels:
+    if call[0] not in total_called_tels and call[0] not in total_sms_tels:
         telemarketers_tels.add(call[0])
 
 print("These numbers could be telemarketers: ")
