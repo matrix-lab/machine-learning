@@ -39,6 +39,6 @@ all_numbers = set(call_dict['to'] + text_dict['from'] + text_dict['to'])
 
 print('These numbers could be telemarketers:')
 
-for item in call_dict['from']:
-    if item not in all_numbers:
-        print(item)
+for num in call_dict['from']:
+    if num not in all_numbers:
+        print(num)
