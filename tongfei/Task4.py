@@ -12,17 +12,33 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
-"""
-任务4:
-电话公司希望辨认出可能正在用于进行电话推销的电话号码。
-找出所有可能的电话推销员:
-这样的电话总是向其他人拨出电话，
-但从来不发短信、接收短信或是收到来电
+
+def get_number(items):
+    """
+    获取拨打电话的列表和被拨打电话的列表，用字典的形式返回
+    :param items:
+    :return:
+    """
+    from_numbers = []
+    to_numbers = []
+
+    for item in items:
+        if item[0] not in from_numbers:
+            from_numbers.append(item[0])
+
+        if item[1] not in to_numbers:
+            to_numbers.append(item[1])
+
+    return {'from': from_numbers, 'to': to_numbers}
 
 
-请输出如下内容
-"These numbers could be telemarketers: "
-<list of numbers>
-电话号码不能重复，每行打印一条，按字典顺序排序后输出。
-"""
+call_dict = get_number(calls)
+text_dict = get_number(texts)
 
+all_numbers = set(call_dict['to'] + text_dict['from'] + text_dict['to'])
+
+print('These numbers could be telemarketers:')
+
+for item in call_dict['from']:
+    if item not in all_numbers:
+        print(item)
