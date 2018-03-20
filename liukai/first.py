@@ -36,3 +36,37 @@ def top_three(num):
     return num[-3:]
 
 print(top_three([6, 15, 34, 35, 65, 89, 8]))
+
+# 中位数
+def median(num_list):
+    num_list.sort()
+    if len(num_list) % 2:
+        mid_index = int(len(num_list) / 2)
+        return num_list[mid_index]
+    else:
+        right_num = int(len(num_list) // 2)
+        left_num = right_num - 1
+        return (num_list[left_num] + num_list[right_num]) / 2
+
+
+
+print(median([1,2,3]))
+print(median([1,2,3,4]))
+
+
+names = ['charlotte hippopotamus turner', 'oliver st. john-mollusc',
+         'nigel incubator-jones', 'philip diplodocus mallory']
+for name in names:
+    print(name.title())
+
+
+company = 'fangxin'
+print(company.title())
+
+def list_sum(lists):
+    sum = 0
+    for num in lists:
+        sum += num
+
+    return sum
+print(list_sum([2,9,4]))
