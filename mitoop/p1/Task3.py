@@ -43,7 +43,7 @@ print("The numbers called by people in Bangalore have codes:")
 for item in sorted(tel_prefix):
     print(item)
 
-# the second question
+# The second question
 text_str = "{:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore."
 
 print(text_str.format(float(bangalore_to_bangalore_records)/float(bangalore_total_records) * 100))

@@ -3,6 +3,7 @@
 你将在以后的课程中了解更多有关读取文件的知识。
 """
 import csv
+
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
@@ -23,3 +24,27 @@ September 2016.".
 如果键不存在于字典内，将此键加入字典，并将它的值设为给定值。
 """
 
+
+def get_count_call_time(data, phone_index, time_index):
+    count = {}
+    for item in data:
+        for index in phone_index:
+            count[item[index]] = count.get(item[index], 0) + int(item[time_index])
+
+    return count
+
+
+def get_max_call_time(count_call_time):
+    max_phone = {'phone': '', 'total': 0}
+    for item in count_call_time:
+        if max_phone['total'] < count_call_time[item]:
+            max_phone['phone'] = item
+            max_phone['total'] = count_call_time[item]
+
+    return max_phone
+
+
+max_call_time = get_max_call_time(get_count_call_time(calls, [0, 1], 3))
+
+print("{} spent the longest time, {} seconds, on the phone duringSeptember 2016.".format(max_call_time['phone'],
+                                                                                         max_call_time['total']))

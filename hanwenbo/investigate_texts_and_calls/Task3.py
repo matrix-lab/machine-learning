@@ -39,3 +39,37 @@ with open('calls.csv', 'r') as f:
 to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
+
+
+def get_prefix(items):
+    prefix = set()
+    for item in items:
+        if item[0][0:5] == '(080)':
+            if item[1][0] == '(':
+                mobile1 = item[1].split(')')
+                prefix.add(mobile1[0][1:])
+            elif item[1][0] in ['7', '8', '9']:
+                mobile1 = item[1].split(' ')
+                prefix.add(mobile1[0])
+
+    return prefix
+
+
+print("The numbers called by people in Bangalore have codes:{}".format(','.join(get_prefix(calls
+                                                                                           ))))
+
+
+def get_ratio(items):
+    total = 0
+    call = 0
+    for item in items:
+        if item[0][0:5] == '(080)':
+            total += 1
+            if item[1][0:5] == '(080)':
+                call += 1
+
+    return call / total
+
+
+print("{:.2f} percent of calls from fixed lines in Bangalore are callsto other fixed lines in Bangalore.".format(
+    get_ratio(calls)))
