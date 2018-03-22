@@ -7,7 +7,7 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
-def count_total(records,number):
+def count_total(records):
 	for record in records:
 		if record[0] not in number:
 				number.append(record[0])
@@ -15,6 +15,6 @@ def count_total(records,number):
 				number.append(record[1])
 
 number = [];
-count_total(texts,number)
-count_total(calls,number)								
+count_total(texts)
+count_total(calls)								
 print(len(number))
