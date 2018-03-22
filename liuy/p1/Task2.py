@@ -16,5 +16,5 @@ def get_datas(recordes):
 get_datas(calls)
 
 result= sorted(lists.items(), key=lambda d:d[1], reverse = True)
-# print(dict[0][1])
+
 print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(result[0][0],result[0][1]))
