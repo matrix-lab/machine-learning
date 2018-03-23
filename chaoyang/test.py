@@ -42,9 +42,59 @@
 #length,width,height = dimensions
 #print("The dimensions are {}*{}*{}".format(length,width,height))
 
+
+#def check_num(num):
+	#if num%3==0:
+		#print("11111")
+	#elif num%3==1:
+		#print('2222')
+	#else:
+		#print('3333')
+
+#check_num(4)
+
+
+
+#def check_num(a,b,c):
+	#if a==1 and (b>1 or c>a):
+		#print('111')
+	#elif a==1 and (not c):
+		#print('2222')
+	#else:
+		#print('3333')
+
+#check_num(1,0,0)
+
+
+#def cylinder_surface_area(radius, height,has_top_and_bottom = False):
+	#if has_top_and_bottom:
+		#空心
+		#return  2* 3.14 * float(radius) * float(height)
+	#else:
+		#return  2* 3.14 * float(radius) * (float(height+2))
+
+#print(cylinder_surface_area(4,3,False))
+
+
+
+
+
+
+
+
+
 #def hours2days(hours):
 #print(int(hours / 24), hours % 24)
 #hours2days(25)
+
+#def todo_list(new_task, base_list=['wake up']):
+    #base_list.append(new_task)
+    #return base_list
+#todo_list("check the mail")
+	
+
+
+
 	
 	
 
