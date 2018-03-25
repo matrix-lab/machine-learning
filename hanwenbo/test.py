@@ -1,16 +1,10 @@
-how_many_snakes = 3
-snake_string = """
-Welcome to Python3!
-
-             ____
-            / . .\\
-            \  ---<
-             \  /
-   __________/ /
--=:___________/
-
-<3, Philip and Charlie
-"""
+import requests
+from bs4 import BeautifulSoup
 
 
-print(snake_string * how_many_snakes)
+r = requests.get('http://www.hanwenbo.top')
+
+soup = BeautifulSoup(r.text, 'html.parser')
+print(soup.find(id='content-masonry').header.h2.a.get('href'))
+
+
