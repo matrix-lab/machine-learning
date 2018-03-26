@@ -23,3 +23,26 @@ with open('calls.csv', 'r') as f:
 <list of numbers>
 电话号码不能重复，每行打印一条，按字典顺序排序后输出。
 """
+
+def getFromAndToCalls(items):
+    fromOrToCalls = {}
+    fromCalls = []
+    toCalls = []
+    for item in items:
+        fromCalls.append(item[0])
+        toCalls.append(item[1])
+    fromOrToCalls['from'] = fromCalls
+    fromOrToCalls['to'] = toCalls
+    return fromOrToCalls
+
+get_calls = getFromAndToCalls(calls)
+get_texts = getFromAndToCalls(texts)
+
+print ("These numbers could be telemarketers: ")
+pring_call = []
+for call in get_calls['from']:
+    if (not call in get_calls['to']) and (not call in get_texts['from']) and (not call in get_texts['to']):
+        pring_call.append(call)
+
+for call in pring_call:
+    print (call)
