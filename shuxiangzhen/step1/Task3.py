@@ -35,3 +35,31 @@ with open('calls.csv', 'r') as f:
 to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
+#a = '(080)12345'
+
+#print (a.index('5'))
+
+toBangaloreAllCalls = {}
+fromBangalore = 0
+toBangalore = 0
+for call in calls:
+    if call[0][0:5] == '(080)':
+        fromBangalore +=1
+        if call[1][0:5] == '(080)':
+            toBangalore +=1
+            toBangaloreAllCalls['(080)'] = '(080)'
+        if call[1][0] in '789':
+            toBangaloreAllCalls[call[1][:call[1].index(' ')]] = call[1][:call[1].index(' ')]
+
+printAllCalls = sorted(toBangaloreAllCalls.keys())
+
+#1
+print("The numbers called by people in Bangalore have codes:")
+for call in printAllCalls:
+    print(call)
+
+#2
+print (format(toBangalore/fromBangalore,'.2f'))
+
+
+
