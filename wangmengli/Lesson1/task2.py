@@ -78,8 +78,18 @@ def convert_to_numeric(score):
     return int(score)
 def sum_of_middle_three(scores1, scores2, scores3, scores4, scores5):
     return scores1 + scores2 + scores3 + scores4 + scores5 - min(scores1, scores2, scores3, scores4, scores5) - max(scores1, scores2, scores3, scores4, scores5)
-def score_to_rating_string(score):
-    return score
+def score_to_rating_string(av_score):
+    if av_score < 1:
+        rating = 'Terrible'
+    elif av_score < 2:
+        rating = "Bad"
+    elif av_score < 3:
+        rating = "OK"
+    elif av_score < 4:
+        rating = "Good"
+    else:
+        rating = "Excellent"
+    return rating
 def scores_to_rating(scores1, scores2, scores3, scores4, scores5):
     '''
         取出3个平均值
@@ -94,8 +104,6 @@ def scores_to_rating(scores1, scores2, scores3, scores4, scores5):
     rating = score_to_rating_string(average_score)
     return rating
 print(scores_to_rating(5, 9, 2, 3, 4))
-
-
 
 
 
