@@ -59,7 +59,7 @@ for call in calls:
         if is_code(call[1]) not in calls_dic:
             calls_dic[is_code(call[1])]=call[1]
 
-call_str='The numbers called by people in Bangalore have codes:'
+call_str='The numbers called by people in Bangalore have codes:'+'\n'
 def print_result(dicts):
     str = '\n'.join(dicts)
     print(call_str + str)
