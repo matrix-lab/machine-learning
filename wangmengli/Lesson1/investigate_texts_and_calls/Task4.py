@@ -22,3 +22,28 @@ with open('calls.csv', 'r') as f:
 电话号码不能重复，每行打印一条，按字典顺序排序后输出。
 """
 
+# 所有被叫电话
+def get_phones(calls):
+    phones = set()
+    for call in calls:
+        phones.add(call[1])
+    return phones
+
+# 所有接/收短信电话
+def get_texts(texts):
+    text_phones = set()
+    for text in texts:
+        text_phones.add(text[0])
+        text_phones.add(text[1])
+    return text_phones
+
+called_phone = get_phones(calls)
+text_phones = get_texts(texts)
+tel_phones = set()
+for call in calls:
+    if call[0] not in called_phone and call[0] not in text_phones:
+        tel_phones.add(call[0])
+print('These numbers could be telemarketers: ')
+for tel in sorted(list(tel_phones)):
+    print('<{}>'.format(tel))
+

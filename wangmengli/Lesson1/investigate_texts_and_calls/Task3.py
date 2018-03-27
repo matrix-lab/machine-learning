@@ -37,18 +37,43 @@ to other fixed lines in Bangalore."
 
 # 获取电话的前缀
 def get_phone_prefix(phone):
+    phone = str(phone)
     prefix = ''
     if phone[0:2] == '(0':
-        prefix = ''
+        # for i in range(len(phone)):
+        #     if phone[i] == ')':
+        #         print(i)
+        #         prefix = phone[0:i+1]
+        i = phone.index(')')
+        prefix = phone[0:i+1]
     else:
         prefix = phone[0:4]
+    return prefix
 
+# 获取被 (080) 这个区号呼叫的电话前缀集合
+def get_phone_called(calls):
+    prefixs = set()
+    for call in calls:
+        if call[0][0:5] == '(080)':
+            prefixs.add(get_phone_prefix(call[1]))
+    return sorted(list(prefixs))
 
-string = '(0852)26565'
-for _ in range(len(string)):
-        if string[_ - 1] == ')':
-            end = _ - 1
+# 第一部分
+print('The numbers called by people in Bangalore have codes:')
+called_prefixs = get_phone_called(calls)
+for called in called_prefixs:
+    print('<{}>'.format(called))
 
+# 第二部分
+send_count = 0
+receive_count = 0
+for call in calls:
+    if get_phone_prefix(call[0]) == '(080)':
+        send_count += 1
+    if get_phone_prefix(call[0]) == '(080)' and get_phone_prefix(call[1]) == '(080)':
+        receive_count += 1
+percentage = round(receive_count/send_count * 100, 2)
+print('<{}%> percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(percentage))
 
 
 
