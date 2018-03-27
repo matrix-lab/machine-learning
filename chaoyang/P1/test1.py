@@ -53,8 +53,6 @@
 
 #check_num(4)
 
-
-
 #def check_num(a,b,c):
 	#if a==1 and (b>1 or c>a):
 		#print('111')
@@ -76,11 +74,14 @@
 #print(cylinder_surface_area(4,3,False))
 
 
+#def list_sum(input_lists):
+	#sum = 0
+	#for input_list in input_lists:
+		#sum += input_list
 
+	#return sum
 
-
-
-
+#print(list_sum([1,2,3]))
 
 
 #def hours2days(hours):
@@ -91,6 +92,8 @@
     #base_list.append(new_task)
     #return base_list
 #todo_list("check the mail")
+
+
 	
 
 
