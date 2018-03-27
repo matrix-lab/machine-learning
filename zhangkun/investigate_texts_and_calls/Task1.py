@@ -1,8 +1,7 @@
-"""
-下面的文件将会从csv文件中读取读取短信与电话记录，
-你将在以后的课程中了解更多有关读取文件的知识。
-"""
+# -*- coding: utf-8 -*-
+
 import csv
+
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
@@ -11,9 +10,18 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
+call_records = set()
 
-"""
-任务1：
-短信和通话记录中一共有多少电话号码？每个号码只统计一次。
-输出信息：
-"There are <count> different telephone numbers in the records.""""
+# set() 是一组key的集合，不存储value。由于key不能重复，所以，在set中，没有重复的key。
+# 通过 add(key) 方法可以添加元素到set中，可以重复添加，但不会有效果。
+
+for text in texts:
+    call_records.add(text[0])
+    call_records.add(text[1])
+
+for call in calls:
+    call_records.add(call[0])
+    call_records.add(call[1])
+
+
+print('There are {} different telephone numbers in the records.'.format(len(call_records)))
