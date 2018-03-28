@@ -1,6 +1,6 @@
 
 """
-whihe循环 练习
+whihe循环 练习.
 pop 从列表最后移出一个元素；append 把一个元素从开始位置放到列表中
 """
 card_deck = [4,11,8,5,13,2,8,10]
@@ -10,6 +10,7 @@ while sum(hand) <= 21:
 	hand.append(card_deck.pop())
 	
 print(hand)
+
 
 
 def nearest_square(limit):
