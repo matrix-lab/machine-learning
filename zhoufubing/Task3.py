@@ -12,6 +12,34 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
+def get_phone_prefix(items):
+	prefix = set()
+	for item in items:
+		if "(" in item[1]:
+			prefix.add(item[1][1:4])
+		elif " " in item[1]:
+			prefix.add(item[1][0:4])
+		elif "140" == item[1][0:3]:
+			prefix.add(item[1][0:3])
+	return prefix
+
+prefix = get_phone_prefix(calls)
+
+print("The numbers called by people in  Bangalorehave codes:")
+for i in prefix:
+	print("<{}>".format(i))
+
+def get_ratio(items):
+	bCount = 0
+	bc = 0
+	for item in items:
+		if item[0][0:5] == "(080)":
+			bCount += 1
+			if item[1][0:5] == "(080)":
+				bc += 1
+	return bc/bCount
+
+print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(get_ratio(calls)*100,2)))
 """
 任务3:
 (080)是班加罗尔的固定电话区号。
@@ -24,9 +52,9 @@ with open('calls.csv', 'r') as f:
    一个空格，以增加可读性。一个移动电话的移动前缀指的是他的前四个
    数字，并且以7,8或9开头。
  - 电话促销员的号码没有括号或空格 , 但以140开头。
-
++
 输出信息:
-"The numbers called by people in Bangalore have codes:"
+"The numbers called by people in  Bangalorehave codes:"
  <list of codes>
 代号不能重复，每行打印一条，按字典顺序排序后输出。
 

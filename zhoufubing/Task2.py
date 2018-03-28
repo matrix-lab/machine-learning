@@ -11,6 +11,20 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
+callDict = {}
+for i in calls:
+	callDict[str(i[0])] = int(callDict.get(str(i[0]),0)) + int(i[3])
+	callDict[str(i[1])] = int(callDict.get(str(i[1]),0)) + int(i[3])
+
+longestNum = ""
+longestTime = 0
+for num in callDict:
+	if longestTime < int(callDict[num]):
+	    longestTime = int(callDict[num])
+	    longestNum = num
+strs = "{} spent the longest time, {} seconds, on the phone during September 2016"
+
+print(strs.format(longestNum,longestTime))
 """
 任务2: 哪个电话号码的通话总时间最长? 不要忘记，用于接听电话的时间也是通话时间的一部分。
 输出信息:
