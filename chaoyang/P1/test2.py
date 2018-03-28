@@ -38,3 +38,40 @@ for cargo in manifest:
 		cargo_hold.append(cargo[0])
 		cargo_weight += cargo[1]
 print(cargo_weight)
+
+
+"""
+集合 练习,
+"""
+def remove_duplicates(source):
+    target = []
+
+    for element in source:
+        if element not in target:
+            target.append(element)
+
+    return target
+
+print(remove_duplicates(['one','one','three','four','two','five','three']
+))
+
+
+def nearest_square_new(limit):
+    answer = 0
+    while (answer+1)**2 < limit:
+        answer += 1
+    return answer**2
+    
+squares = set()
+
+start = 2000
+while True:
+    square_number = nearest_square_new(start)
+    
+    if square_number == 0:
+        break
+    
+    squares.add(square_number)
+    start = square_number
+    
+print(squares)
