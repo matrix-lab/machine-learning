@@ -2,7 +2,10 @@
 
 # -*- coding: utf-8 -*-
 
-# 想用#写注释时，要声明格式。报错原因: but no encoding declared
+# xrange(start, stop[, step])
 
-print('hello,python')
+print("(" not in '(11)')
+
+
+
 

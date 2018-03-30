@@ -1,12 +1,6 @@
-"""
-下面的文件将会从csv文件中读取读取短信与电话记录，
-你将在以后的课程中了解更多有关读取文件的知识。
-"""
-import csv
+# -*- coding: utf-8 -*-
 
-with open('texts.csv', 'r') as f:
-    reader = csv.reader(f)
-    texts = list(reader)
+import csv
 
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
@@ -39,3 +33,24 @@ with open('calls.csv', 'r') as f:
 to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
+
+
+def getPrefixes(calls):
+
+    prefix = set()
+
+    for call in calls:
+        if call[1][0:5] == '(080)':
+            tel = str(call[0])
+            if tel[0:3] == '140':
+                prefix.add('140')
+            elif '(' not in tel and ' ' in tel and tel[0:1] in '789':
+                prefix.add(tel[0:4])
+            elif tel[0:2] == '(0':
+                prefix.add(tel.split(')')[0][1:])
+
+    return prefix
+
+print("The numbers called by people in Bangalore have codes:")
+for prefix in sorted(getPrefixes(calls)):
+    print(prefix)
