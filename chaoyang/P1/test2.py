@@ -75,3 +75,6 @@ while True:
     start = square_number
     
 print(squares)
+
+
+
