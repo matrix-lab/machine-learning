@@ -29,7 +29,32 @@ with open('calls.csv', 'r') as f:
 "The numbers called by people in Bangalore have codes:"
  <list of codes>
 代号不能重复，每行打印一条，按字典顺序排序后输出。
+"""
 
+temps = []
+for call in calls:
+    if call[0].count('(080)', 0, len(call[0])) > 0:
+        temps.append(call[1])
+# print(len(temps))
+unique_lists = list(set(temps))
+# print(len(unique_lists))
+return_list = []
+for unique_list in unique_lists:
+    if unique_list.count(')') > 0:
+        item = unique_list.split(')')
+        return_list.append(item[0] + ')')
+    if unique_list.count(' ') > 0:
+        item = unique_list.split(' ')
+        return_list.append(item[0])
+# print(len(return_list))
+
+#两次的列表顺序多次执行结果都不一样
+return_str = '\n' +  '\n'.join(return_list)
+print('The numbers called by people in Bangalore have codes: %s' % return_str)
+# for uinque_list in uinque_lists:
+#     if
+
+"""
 第二部分: 由班加罗尔固话打往班加罗尔的电话所占比例是多少？
 换句话说，所有由（080）开头的号码拨出的通话中，
 打往由（080）开头的号码所占的比例是多少？
@@ -39,3 +64,13 @@ with open('calls.csv', 'r') as f:
 to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
+all_calls = temps
+total = len(temps)
+nums = 0
+for temp in temps:
+    # if temp.find('(080)') >0:
+    if '(080)' in temp:
+        nums += 1
+ratio = round(nums / total, 4) * 100
+
+print('%s percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.' % ratio)
