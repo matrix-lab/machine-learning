@@ -25,4 +25,15 @@ with open('calls.csv', 'r') as f:
 <list of numbers>
 电话号码不能重复，每行打印一条，按字典顺序排序后输出。
 """
+import Common
 
+text_phones = list(set(Common.merge_lists(texts)))
+called_phones = list(set(Common.merge_call_lists(calls, 'called')))
+telemarketer_phons = list()
+for call in calls:
+    if Common.check_telemarketer_phone(call[0]) and call[0] not in called_phones and call[0] not in text_phones:
+        if call[0] not in telemarketer_phons:
+            telemarketer_phons.append(call[0])
+
+return_str = '\n' +  '\n'.join(telemarketer_phons)
+print("These numbers could be telemarketers:  %s" % return_str)
