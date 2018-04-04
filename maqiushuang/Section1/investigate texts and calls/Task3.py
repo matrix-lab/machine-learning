@@ -27,6 +27,34 @@ with open('calls.csv', 'r') as f:
 
 """
 
+prefix = ''
+def get_phone_prefix(phone):
+    """
+        通过区号，获取被这个区号呼叫的电话前缀集合
+        phone[0:2]前两位
+        i = phone.index(')')  获取）所在下标
+    """
+    if phone[0:2] == '(0':
+        i = phone.index(')')
+        prefix = phone[0:i+1]
+    else:
+        prefix = phone[0:4]
+    return prefix
+
+# 获取被 (080) 这个区号呼叫的电话前缀集合
+def get_phone_called(calls):
+    """
+       call[0][0:5]   呼出电话区号
+    """
+    prefixs = set()
+    for call in calls:
+        if call[0][0:5] == '(080)':
+            prefixs.add(get_phone_prefix(call[1]))
+    return sorted(prefixs)
+
+called_prefixs = get_phone_called(calls)
+for called in called_prefixs:
+    print('<{}>'.format(called))
 
 """
 第二部分: 由班加罗尔固话打往班加罗尔的电话所占比例是多少？
@@ -38,6 +66,15 @@ with open('calls.csv', 'r') as f:
 to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
+send = 0
+receive = 0
+for call in calls:
+    if get_phone_prefix(call[0]) == '(080)':
+        send += 1
+    if get_phone_prefix(call[0]) == '(080)' and get_phone_prefix(call[1]) == '(080)':
+        receive += 1
+
+print(round(receive/send * 100, 2))
 
 
 
