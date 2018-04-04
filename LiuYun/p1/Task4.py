@@ -34,7 +34,6 @@ get_numbers(texts,text_record,text_record)
 is_promote(promote,text_record)
 is_promote(promote,called_record)
 
-
 promote =  "\n".join(sorted(promote))
 
 print("These numbers could be telemarketers:")
