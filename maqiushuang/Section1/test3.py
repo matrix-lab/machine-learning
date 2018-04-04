@@ -2,73 +2,66 @@
 # -*- coding: UTF-8 -*-
 
 
-rainfall = 5
+cities = ['new york city', 'mountain view', 'chicago', 'los angeles']
+capitalized_cities = []
 
-# decrease the rainfall variable by 10% to account for runoff
-rainfall *= .9
+for city in cities:
+    capitalized_cities.append(city.title())
+print(capitalized_cities)
 
-print(rainfall)
+cities = ['new york city', 'mountain view', 'chicago', 'los angeles']
 
-print(1 < 2)
+for index in range(len(cities)):
+    cities[index] = cities[index].title()
+print(cities)
 
-str_1 = 'qbc'
-str_2 = 'ABLVG'
+# names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+#
+# for name in names:
+#     name = name.lower().replace(" ", "_")
+#
+# print(names)
 
-print(str_1 + str_2)
+names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+usernames = []
 
-salesman = '"I think you\'re an encyclopaedia salesman"'
-print(salesman)
+for name in names:
+    usernames.append(name.lower().replace(" ", "_"))
 
-ai_length = len("dflkjdlkfjdljf");
-print(ai_length)
-print(type(6))
-print(type('6'))
-print(type(6.56))
-count = int(4.0)
-print(count)
-print(type(count))
+print(usernames)
 
-mon_sales = "121"
-tues_sales = "105"
-wed_sales = "110"
-thurs_sales = "98"
-fri_sales = "95"
+limit = 40
 
-total_sales = int(mon_sales) + int(tues_sales) + int(wed_sales) + int(thurs_sales) + int(fri_sales)
+num = 0
+while (num+1)**2 < limit:
+    num += 1
+nearest_square = num**2
 
-str_total_sales = str(total_sales)
-
-print("This week's total sales: " + str_total_sales)
-#title 方法。该方法返回首字母大写的字符串，即每个单词的第一个字母都被大写。
-print("charlotte hippopotamus turner".title())
-#islower 返回一个布尔值，说明该字符串对象中的字母是否都是小写字母（不区分大小写的字符不计算在内，比如标点符号）。
-print("charlotte hippopotamus turner".islower())
-num = 'ad '.islower()
+print(nearest_square)
 print(num)
 
-prophecy = "And"
+some_list = [('a', 1), ('b', 2), ('c', 3)]
+letters, nums = zip(*some_list)
+print(letters, nums )
+print(some_list)
 
-vowel_count = 0
+x_coord = [23, 53, 2, -12, 95, 103, 14, -5]
+y_coord = [677, 233, 405, 433, 905, 376, 432, 445]
+z_coord = [4, 16, -6, -42, 3, -6, 23, -1]
+labels = ["F", "J", "A", "Q", "Y", "B", "W", "X"]
 
-prophecy = prophecy.lower()
+points = []
+for point in zip(labels, x_coord, y_coord, z_coord):
+    points.append("{}: {}, {}, {}".format(*point))
 
-print(prophecy)
+for point in points:
+    print(point)
 
-vowel_count = prophecy.count('a') + prophecy.count('e') + prophecy.count('i') + prophecy.count('o') + prophecy.count('u')
+cast_names = ["Barney", "Robin", "Ted", "Lily", "Marshall"]
+cast_heights = [72, 68, 72, 66, 76]
+# dict 遍历
+cast = dict(zip(cast_names, cast_heights))
+print(cast)
 
-# Print the final count
-print(vowel_count)
 
-user_ip = '208.94.117.90'
-url = 'classroom.udacity.com'
-now = '16:04'
-log_message = "IP address {} accessed {} at {}".format(user_ip, url, now)
-
-print(log_message)
-
-name = 'li'
-age = 24
-sex = 'female'
-
-alert = "Hello dear {} ,I know your age is {},your sex is {}.".format(name, age, sex)
-print(alert)
+print([x**2 if x % 2 == 0 else x + 3 for x in range(9)])
