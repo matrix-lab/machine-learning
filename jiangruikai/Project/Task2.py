@@ -1,3 +1,4 @@
+#coding:utf-8
 """
 下面的文件将会从csv文件中读取读取短信与电话记录，
 你将在以后的课程中了解更多有关读取文件的知识。
@@ -22,4 +23,14 @@ September 2016.".
 如果键已经存在于字典内，为键所对应的值加上对应数值；
 如果键不存在于字典内，将此键加入字典，并将它的值设为给定值。
 """
+d = {}
+for call in calls:
+    d[call[0]] = int(call[3])
+    d[call[1]] = int(call[3])
+#print len(d)
 
+max_phone = max(d.values())
+#print max_phone
+for phone in d.items():
+    if int(phone[1]) == max_phone:
+        print phone
