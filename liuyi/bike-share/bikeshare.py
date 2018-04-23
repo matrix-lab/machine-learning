@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',
+              'new york city': 'new-york-city.csv',
               'washington': 'washington.csv' }
 
 def get_filters():
@@ -19,6 +19,7 @@ def get_filters():
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = ''
     while city not in CITY_DATA.keys():
+        print(CITY_DATA.keys())
         print('which city? please select Chicago, New York City, or Washington?')
         city = input().lower()
 
@@ -108,7 +109,7 @@ def station_stats(df):
 
     # TO DO: display most frequent combination of start station and end station trip
     most_start_end = df.groupby(['Start Station', 'End Station']).size().reset_index(name='count')
-    most_index = most_start_end['count'].argmax();
+    most_index = most_start_end['count'].idxmax();
     most_start = most_start_end.loc[most_index]['Start Station']
     most_end = most_start_end.loc[most_index]['End Station']
     most_count = most_start_end.loc[most_index]['count']
@@ -125,9 +126,11 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # TO DO: display total travel time
+    print('Total Travel Time:', df['Trip Duration'].sum())
 
 
     # TO DO: display mean travel time
+    print('Mean Travel Time:', df['Trip Duration'].mean())
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -141,12 +144,21 @@ def user_stats(df):
     start_time = time.time()
 
     # TO DO: Display counts of user types
+    count_user_types = df['User Type'].value_counts()
+    for index in count_user_types.index:
+        print(index, ':', count_user_types[index], '\n')
 
 
     # TO DO: Display counts of gender
+    count_gender = df['Gender'].value_counts()
+    for index in count_gender.index:
+        print(index, ':', count_gender[index], '\n')
 
 
     # TO DO: Display earliest, most recent, and most common year of birth
+    print('Earliest year of birth:', df['Birth Year'].min())
+    print('Most recent year of birth:', df['Birth Year'].max())
+    print('Most common year of birth:', df['Birth Year'].mode()[0])
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
