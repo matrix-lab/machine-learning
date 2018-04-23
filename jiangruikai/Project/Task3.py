@@ -1,3 +1,4 @@
+#coding:utf-8
 """
 下面的文件将会从csv文件中读取读取短信与电话记录，
 你将在以后的课程中了解更多有关读取文件的知识。
@@ -39,3 +40,31 @@ with open('calls.csv', 'r') as f:
 to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
+# A
+call_sends = [call[0] for call in calls]
+call_receives = [call[1] for call in calls]
+
+def get_called_area_code(call_number):
+	if call_number[0] == '(':
+		return call_number[1:call_number.find(')')]
+	elif call_number.find('140') == 0:
+		return '140'
+	else:
+		return call_number[0:4]
+
+area_code_list = []
+area_code_count = {}
+for index in call_receives:
+	if index[0:5] == '080':
+		area_code = get_called_area_code(index)
+		if area_code not in area_code_list:
+			area_code_list.append(area_code)
+
+print area_code_list
+
+#B
+sum_count = sum(area_code_count.values())
+if sum_count == 0:
+	sum_count = 1
+percent = area_code_count['080'] / sum_count * 100
+print percent
